@@ -1,0 +1,17 @@
+
+
+* Top Menu -C-
+* Main -C-
+    ** Main Planet -C-
+        *** Name
+        *** Ask AI
+    ** Carrucel -C-
+        *** AI Category -C-
+            **** Category Name
+            **** Category Planet 
+            **** Show Category -C-
+                ***** Main Planet
+                ***** IA Carrucel -C-
+                    ***** IA image
+            
+3. 
