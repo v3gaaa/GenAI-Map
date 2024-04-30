@@ -7,7 +7,7 @@ Este repositorio contiene un proyecto básico configurado con Vite y React.
 Para clonar este repositorio en tu máquina local, asegúrate de tener Git instalado. Luego, ejecuta el siguiente comando en tu terminal:
 
 ```
-git clone https://github.com/tu_usuario/tu_proyecto.git
+git clone https://github.com/v3gaaa/GenAI-Map.git
 ```
 
 ## Instalación de Dependencias
