@@ -21,6 +21,7 @@ cd GenAI-Map
 Luego, instala las dependencias necesarias usando npm (asegúrate de tener Node.js instalado en tu sistema):
 
 ```
+cd frontend
 npm install
 ```
 
@@ -29,7 +30,6 @@ npm install
 Una vez que todas las dependencias se hayan instalado correctamente, puedes ejecutar el proyecto localmente. Simplemente utiliza los siguientes comandos:
 
 ```
-cd frontend
 npm run dev
 ```
 
