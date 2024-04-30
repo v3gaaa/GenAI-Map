@@ -15,13 +15,12 @@ git clone https://github.com/v3gaaa/GenAI-Map.git
 Una vez que hayas clonado el repositorio, navega hasta la carpeta del proyecto:
 
 ```
-cd GenAI-Map
+cd GenAI-Map/frontend
 ```
 
 Luego, instala las dependencias necesarias usando npm (asegúrate de tener Node.js instalado en tu sistema):
 
 ```
-cd frontend
 npm install
 ```
 
