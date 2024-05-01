@@ -1,8 +1,15 @@
+import { useState } from "react";
+
 import "./MenuBar.css";
+import MainContainer from "./MainContainer";
 
 const MenuBar = () => {
+  const [content, setContent] = useState("home");
+  const setCategory = (cat) => {
+    setContent(cat);
+  };
   const styleButton =
-    "w-1/6 h-1/2 flex items-center justify-center transition transform hover:-translate-y-1 hover:scale-110 mt-2 cursor-pointer";
+    "w-1/6 h-1/2 flex items-center justify-center transition transform hover:-translate-y-1 hover:scale-110 mt-2 cursor-pointer md:text-xs lg:text-sm xl:text-base";
   return (
     <>
       <div
@@ -10,14 +17,43 @@ const MenuBar = () => {
         style={{ height: "8%" }}
         id="menuBar"
       >
-        <div className={styleButton}>Home</div>
-        <div className={styleButton}>Categorias</div>
-        <div className="w-1/6 h-1/2 flex items-center justify-center text-lg font-normal transition transform hover:-translate-y-1 hover:scale-110 cursor-pointer">
+        <div
+          className={styleButton}
+          onClick={() => {
+            setCategory("home");
+          }}
+        >
+          Home
+        </div>
+        <div
+          className={styleButton}
+          onClick={() => {
+            setCategory("category");
+          }}
+        >
+          Categorias
+        </div>
+        <div className="w-1/6 h-1/2 flex items-center justify-center text-center text-lg font-normal transition transform hover:-translate-y-1 hover:scale-110 cursor-pointer md:text-lg lg:text-xl xl:text-2xl">
           AI Universe
         </div>
-        <div className={styleButton}>LLM</div>
-        <div className={styleButton}>Cursos</div>
+        <div
+          className={styleButton}
+          onClick={() => {
+            setCategory("llm");
+          }}
+        >
+          LLM
+        </div>
+        <div
+          className={styleButton}
+          onClick={() => {
+            setCategory("courses");
+          }}
+        >
+          Cursos
+        </div>
       </div>
+      <MainContainer content={content} />
     </>
   );
 };
