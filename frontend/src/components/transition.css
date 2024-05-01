@@ -1,0 +1,17 @@
+.slide-enter {
+  transform: translateX(100%); /* Initially position off-screen to the right */
+}
+
+.slide-enter-active {
+  transform: translateX(0); /* Transition to the center */
+  transition: transform 0.5s ease-in-out; /* Adjust the duration and timing function */
+}
+
+.slide-exit {
+  transform: translateX(0); /* Ensure it starts from the center */
+}
+
+.slide-exit-active {
+  transform: translateX(-100%); /* Transition off-screen to the left */
+  transition: transform 0.5s ease-in-out; /* Adjust the duration and timing function */
+}

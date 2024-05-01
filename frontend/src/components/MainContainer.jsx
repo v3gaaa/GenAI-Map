@@ -1,8 +1,48 @@
-const MainContainer = () => {
+import React, { useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import "./transition.css";
+
+import Home from "./menucomponents/Home";
+import Category from "./menucomponents/Category";
+import LLM from "./menucomponents/LLM";
+import Courses from "./menucomponents/Courses";
+
+const MainContainer = ({ content }) => {
   return (
     <>
-      <div className="w-full h-full bg-white flex items-center justify-center bg-opacity-10">
-        <div>Main container</div>
+      <div className="w-full h-full flex items-center justify-center">
+        <CSSTransition
+          in={content === "home"}
+          timeout={500}
+          classNames="slide"
+          unmountOnExit
+        >
+          <Home />
+        </CSSTransition>
+        <CSSTransition
+          in={content === "category"}
+          timeout={500}
+          classNames="slide"
+          unmountOnExit
+        >
+          <Category />
+        </CSSTransition>
+        <CSSTransition
+          in={content === "llm"}
+          timeout={500}
+          classNames="slide"
+          unmountOnExit
+        >
+          <LLM />
+        </CSSTransition>
+        <CSSTransition
+          in={content === "courses"}
+          timeout={500}
+          classNames="slide"
+          unmountOnExit
+        >
+          <Courses />
+        </CSSTransition>
       </div>
     </>
   );
