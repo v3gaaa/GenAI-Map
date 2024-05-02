@@ -67,7 +67,7 @@ const Carousel = ({ planets }) => {
             className="w-full h-auto aspect-video"
             style={{
               position: "absolute",
-              transform: `translate3d(${x}px, ${y}px, 0) scale(${scaleFactor})`,
+              transform: `translate3d(${x}px, ${y}px, 0)`,
               zIndex: numPlanets - index,
             }}
           >

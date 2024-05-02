@@ -15,6 +15,7 @@ const Home = () => {
         }}
       >
         <PlanetContainer surface={"sun.jpg"} />
+        <MyCarousel />
       </div>
     </>
   );
