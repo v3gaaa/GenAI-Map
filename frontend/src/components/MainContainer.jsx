@@ -13,7 +13,7 @@ const MainContainer = ({ content }) => {
       <div className="w-full h-full flex items-center justify-center">
         <CSSTransition
           in={content === "home"}
-          timeout={500}
+          timeout={900}
           classNames="slide"
           unmountOnExit
         >
@@ -21,7 +21,7 @@ const MainContainer = ({ content }) => {
         </CSSTransition>
         <CSSTransition
           in={content === "category"}
-          timeout={500}
+          timeout={900}
           classNames="slide"
           unmountOnExit
         >
@@ -29,7 +29,7 @@ const MainContainer = ({ content }) => {
         </CSSTransition>
         <CSSTransition
           in={content === "llm"}
-          timeout={500}
+          timeout={900}
           classNames="slide"
           unmountOnExit
         >
@@ -37,7 +37,7 @@ const MainContainer = ({ content }) => {
         </CSSTransition>
         <CSSTransition
           in={content === "courses"}
-          timeout={500}
+          timeout={900}
           classNames="slide"
           unmountOnExit
         >
