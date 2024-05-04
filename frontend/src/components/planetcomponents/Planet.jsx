@@ -33,7 +33,7 @@ function Sphere({ scale, surface }) {
   useFrame((state, delta) => {
     if (meshRef.current) {
       // Update y-axis rotation relative to z-axis rotation
-      meshRef.current.rotation.y += 0.3 * delta; // Adjust rotation speed as needed
+      meshRef.current.rotation.y += 0.13 * delta; // Adjust rotation speed as needed
 
       // Update z-axis rotation (tilted rotation)
       meshRef.current.rotation.z += 0.005 * delta; // Adjust tilt rotation speed as needed
@@ -42,7 +42,7 @@ function Sphere({ scale, surface }) {
 
   return (
     <mesh scale={[scale, scale, scale]} ref={meshRef}>
-      <sphereGeometry args={[1.5, 64, 32]} />
+      <sphereGeometry args={[2, 64, 32]} />
       <meshPhysicalMaterial
         map={texture}
         clearcoat={2}
@@ -78,9 +78,9 @@ const Planet = ({ surface }) => {
       <Canvas
         frameloop="always"
         camera={{ position: [0, 0, 5], fov: 45 }}
-        style={{ background: "none" }}
+        style={{ background: "none", borderRadius: "100%" }}
       >
-        <ambientLight intensity={6} />
+        <ambientLight intensity={7} />
 
         <Sphere scale={scale} surface={surface} />
         <Grading />
