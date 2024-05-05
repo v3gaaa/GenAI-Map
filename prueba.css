@@ -1,0 +1,3 @@
+/* En tu archivo principal de CSS (por ejemplo, index.css) */
+
+@import './pruebas.scss'; /* Importa el archivo SCSS */

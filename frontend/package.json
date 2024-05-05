@@ -10,13 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material-tailwind/react": "^2.1.9",
     "@react-three/drei": "^9.105.5",
     "@react-three/fiber": "^8.16.2",
     "@react-three/postprocessing": "^2.16.2",
+    "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
     "react-spring": "^9.7.3",
     "react-transition-group": "^4.4.5",
+    "swiper": "^11.1.1",
     "three": "^0.164.1"
   },
   "devDependencies": {
@@ -29,6 +33,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss": "^8.4.38",
+    "sass": "^1.76.0",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.0"
   }
