@@ -23,7 +23,6 @@ const Planet2Container = () => {
   };
 
   return (
-<<<<<<< HEAD
     <div className="absolute top-0 left-0 w-full h-full z-0">
       {/* <div
         className="absolute aspect-square"
@@ -35,13 +34,6 @@ const Planet2Container = () => {
         const ranW = getRandomWidth();
         return (
           <>
-=======
-    <>
-      <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-        <div className="absolute w-1/5 h-auto aspect-square bottom-3/4 flex items-center">
-          <Planet surface={surface} />
-          <div className="absolute h-full w-full inset-0 flex justify-center items-center flex-col">
->>>>>>> 689cb43b4a50f3bfea0e46b12272478619ee471a
             <div
               className="absolute aspect-square"
               style={{
