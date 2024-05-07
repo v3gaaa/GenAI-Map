@@ -1,9 +1,10 @@
 import PlanetContainer from "../planetcomponents/PlanetContainer";
+import Indiv from "../Categories/indiv";
 
 const LLM = () => {
   return (
     <>
-      <PlanetContainer surface={"p2.png"} />
+      <Indiv Category={"sun.jpg"}/>
     </>
   );
 };

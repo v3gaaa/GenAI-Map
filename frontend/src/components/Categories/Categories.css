@@ -1,0 +1,107 @@
+.rocketButton {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+}
+
+.rocketButton svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.rocketButton span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.rocketButton:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+.rocketButton:hover span {
+  transform: translateX(7px);
+}
+
+
+.main-container{
+  display: flex;
+  min-height: 80%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-up{
+  display: flex;
+  width: 100%;
+  min-height: 60%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-down{
+  display: flex;
+  min-height: 40%;
+  max-height: 40%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.down{
+  display: flex;
+  min-width: 100%;
+  width: 100%;
+}
+
+.down-1{
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.down-2{
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: -40%;
+}
+
+.down-3{
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.down-1-in{
+  width: 100%;
+  height: 80%;
+  margin-left: -100%;
+}
+
+.down-3-in{
+  width: 100%;
+  height: 80%;
+  margin-right: -100%;
+}
