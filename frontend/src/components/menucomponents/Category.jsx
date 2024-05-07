@@ -1,5 +1,7 @@
 import PlanetContainer from "../planetcomponents/PlanetContainer";
 import Categories from "../Categories/Categories";
+import React, { useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
 const Category = () => {
   return (
