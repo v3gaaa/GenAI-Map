@@ -3,5 +3,5 @@
   margin: 0 auto;
   padding: 2rem;
   background: linear-gradient(135deg, #08061a, #0d061a, #010101);
-  z-index: -5;
+  z-index: -10;
 }

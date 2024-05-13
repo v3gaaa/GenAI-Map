@@ -3,7 +3,7 @@ import PlanetContainer from "../planetcomponents/PlanetContainer";
 const Courses = () => {
   return (
     <>
-      <PlanetContainer surface={"p4.jpg"} />
+      <div>cursos</div>
     </>
   );
 };
