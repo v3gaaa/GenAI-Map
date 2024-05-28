@@ -1,4 +1,3 @@
-// models/ai.js
 const db = require('../config/db');
 
 const getAllAIs = async () => {
