@@ -66,7 +66,7 @@ const SunContainer = ({ surface }) => {
           <textarea
             rows={3}
             ref={inputRef}
-            className={`text-white bg-white w-5/6 h-1/4 p-1 bg-opacity-50 rounded-md placeholder-black transition${
+            className={`text-white bg-white w-5/6 h-1/4 p-1 bg-opacity-50 rounded-md placeholder-black sm:placeholder-sm lg:placeholder-lg transition${
               hovered || clicked
                 ? "opacity-100 transition-opacity transition-transform duration-500"
                 : "opacity-0"

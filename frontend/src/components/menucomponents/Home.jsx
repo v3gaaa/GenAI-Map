@@ -3,6 +3,29 @@ import SunContainer from "../planetcomponents/SunContainer";
 import Planet2Container from "../planetcomponents/Planet2Container";
 
 const Home = () => {
+  const categories = [
+    "Image",
+    "Text",
+    "Video",
+    "Music & Sound",
+    "Code Generator",
+    "Data",
+    "Game",
+    "Vector database",
+  ];
+
+  const surfaces = [
+    "p1.jpg",
+    "p2.jpg",
+    "p3.jpg",
+    "p4.jpg",
+    "terrazo.png",
+    "p5.jpg",
+    "p6.jpg",
+    "p7.jpg",
+    "p8.jpg",
+    "p10.png",
+  ];
   return (
     <>
       <svg
@@ -26,25 +49,46 @@ const Home = () => {
         <div className="absolute w-full h-full"></div>
         <div
           id="left-container"
-          className="h-full w-1/3 flex items-end justify-center relative flex-col"
+          className="h-full w-1/3 flex items-end justify-start relative flex-col text-center"
         >
-          <div className="h-1/2 w-2/3 flex items-center justify-center text-white">
+          <div className="h-1/5 w-2/3 flex items-center justify-end text-white">
             <PlanetContainer
-              surface={"p7.jpg"}
-              name={"Images"}
+              surface={surfaces[0]}
+              name={categories[0]}
               shacolor={"#9a326e"}
             />
-            {/* <div className="absolute w-1/2 h-auto aspect-square flex items-center justify-center">
+            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
           </div>
-          <div className="h-1/2 w-2/3 flex items-start justify-end text-white">
+          <div className="h-1/5 w-2/3 flex items-start justify-start text-white mb-10">
             <PlanetContainer
-              surface={"p8.png"}
-              name={"Music"}
+              surface={surfaces[1]}
+              name={categories[1]}
               shacolor={"#b97a94"}
             />
-            {/* <div className="absolute w-1/2 h-auto aspect-square flex items-center justify-center">
+            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              Planet
+            </div> */}
+          </div>
+          <div className="h-2/12"></div>
+          <div className="h-1/5 w-2/3 flex items-start justify-start text-white">
+            <PlanetContainer
+              surface={surfaces[2]}
+              name={categories[2]}
+              shacolor={"#b97a94"}
+            />
+            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              Planet
+            </div> */}
+          </div>
+          <div className="h-1/5 w-2/3 flex items-start justify-end text-white">
+            <PlanetContainer
+              surface={surfaces[3]}
+              name={categories[3]}
+              shacolor={"#b97a94"}
+            />
+            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
           </div>
@@ -60,25 +104,46 @@ const Home = () => {
         </div>
         <div
           id="right-container"
-          className="h-full w-1/3 flex items-start justify-center relative flex-col"
+          className="h-full w-1/3 flex items-start justify-start relative flex-col text-center"
         >
-          <div className="h-1/2 w-2/3 flex items-center justify-center text-white">
+          <div className="h-1/5 w-2/3 flex items-center justify-start text-white">
             <PlanetContainer
-              surface={"p3.jpg"}
-              name={"Data"}
-              shacolor={"#b8c9a8"}
+              surface={surfaces[4]}
+              name={categories[4]}
+              shacolor={"#9a326e"}
             />
-            {/* <div className="absolute w-1/2 h-auto aspect-square flex items-center justify-center">
+            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
           </div>
-          <div className="h-1/2 w-2/3 flex items-start justify-start text-white">
+          <div className="h-1/5 w-2/3 flex items-start justify-end text-white mb-10">
             <PlanetContainer
-              surface={"p10.jpg"}
-              name={"Text"}
-              shacolor={"#3a9ded"}
+              surface={surfaces[5]}
+              name={categories[5]}
+              shacolor={"#b97a94"}
             />
-            {/* <div className="absolute w-1/2 h-auto aspect-square flex items-center justify-center">
+            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              Planet
+            </div> */}
+          </div>
+          <div className="h-2/12"></div>
+          <div className="h-1/5 w-2/3 flex items-start justify-end text-white">
+            <PlanetContainer
+              surface={surfaces[6]}
+              name={categories[6]}
+              shacolor={"#b97a94"}
+            />
+            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              Planet
+            </div> */}
+          </div>
+          <div className="h-1/5 w-2/3 flex items-start justify-start text-white">
+            <PlanetContainer
+              surface={surfaces[7]}
+              name={categories[7]}
+              shacolor={"#b97a94"}
+            />
+            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
           </div>

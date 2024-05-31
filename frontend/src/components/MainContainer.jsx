@@ -5,17 +5,29 @@ import "./../components/transition.css";
 import Home from "./menucomponents/Home";
 import Category from "./menucomponents/Category";
 import LLM from "./menucomponents/LLM";
-import Courses from "./Categories/Categories";
+import Courses from "./menucomponents/Courses";
 
 const MainContainer = ({ content }) => {
   return (
     <>
       <div className="w-full h-full flex items-center justify-center">
-        <CSSTransition
+        {content == "home" ? (
+          <Home />
+        ) : content == "category" ? (
+          <Category />
+        ) : content === "llm" ? (
+          <LLM />
+        ) : content === "courses" ? (
+          <Courses />
+        ) : (
+          <Home />
+        )}
+        {/* <CSSTransition
           in={content === "home"}
           timeout={900}
           classNames="slide"
           unmountOnExit
+          key={"home"}
         >
           <Home />
         </CSSTransition>
@@ -24,6 +36,7 @@ const MainContainer = ({ content }) => {
           timeout={900}
           classNames="slide"
           unmountOnExit
+          key={"category"}
         >
           <Category />
         </CSSTransition>
@@ -32,6 +45,7 @@ const MainContainer = ({ content }) => {
           timeout={900}
           classNames="slide"
           unmountOnExit
+          key={"llm"}
         >
           <LLM />
         </CSSTransition>
@@ -40,9 +54,10 @@ const MainContainer = ({ content }) => {
           timeout={900}
           classNames="slide"
           unmountOnExit
+          key={"courses"}
         >
           <Courses />
-        </CSSTransition>
+        </CSSTransition> */}
       </div>
     </>
   );
