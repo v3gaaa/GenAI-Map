@@ -15,16 +15,16 @@ const Home = () => {
   ];
 
   const surfaces = [
-    "p1.png",
-    "p2.png",
-    "p8.png",
-    "p10.jpg",
-    "terrazo.png",
+    "p1.jpg",
+    "p2.jpg",
     "p3.jpg",
     "p4.jpg",
+    "terrazo.png",
     "p5.jpg",
     "p6.jpg",
     "p7.jpg",
+    "p8.jpg",
+    "p10.png",
   ];
   return (
     <>

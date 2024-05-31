@@ -11,7 +11,18 @@ const MainContainer = ({ content }) => {
   return (
     <>
       <div className="w-full h-full flex items-center justify-center">
-        <CSSTransition
+        {content == "home" ? (
+          <Home />
+        ) : content == "category" ? (
+          <Category />
+        ) : content === "llm" ? (
+          <LLM />
+        ) : content === "courses" ? (
+          <Courses />
+        ) : (
+          <Home />
+        )}
+        {/* <CSSTransition
           in={content === "home"}
           timeout={900}
           classNames="slide"
@@ -46,7 +57,7 @@ const MainContainer = ({ content }) => {
           key={"courses"}
         >
           <Courses />
-        </CSSTransition>
+        </CSSTransition> */}
       </div>
     </>
   );
