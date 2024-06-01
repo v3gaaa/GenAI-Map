@@ -1,5 +1,6 @@
 import PlanetContainer from "../planetcomponents/PlanetContainer";
 import React, { useState } from "react";
+import bcrypt from 'bcryptjs';
 
 const Courses = () => {
 
@@ -25,14 +26,22 @@ const Courses = () => {
       const handleSignUp = async (e) => {
         e.preventDefault();
         try {
+          const salt = await bcrypt.genSalt(10);
+          const hashedPassword = await bcrypt.hash(form.password, salt);
+
+          const formWithHashedPassword = {
+              ...form,
+              password: hashedPassword,
+          };
+
           const res = await fetch('http://localhost:8000/api/users/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(form),
+            body: JSON.stringify(formWithHashedPassword),
           });
-          return res.status === 200
+          return res.status === 201
             ? alert('Registro exitoso')
             : alert('Error al registrar');
         } catch (error) {
