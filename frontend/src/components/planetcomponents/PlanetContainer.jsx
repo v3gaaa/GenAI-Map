@@ -41,6 +41,7 @@ const PlanetContainer = ({ surface, name, shacolor }) => {
         style={{ boxShadow: `0px 2px 10px 0px ${shacolor}BF` }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={console.log("lista")}
       >
         <Planet surface={surface} />
         <div className="absolute h-full inset-0 flex items-center justify-center flex-col">
