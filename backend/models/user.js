@@ -12,8 +12,8 @@ const getUserById = async (id) => {
 
 const createUser = async (user) => {
     const result = await db.query(
-        'INSERT INTO usuarios (username, email, password, created_at, updated_at) VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',
-        [user.username, user.email, user.password]
+        'INSERT INTO usuarios (username, email, password, created_at, updated_at, firstname, lastname) VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, $4, $5) RETURNING *',
+        [user.username, user.email, user.password, user.firstname, user.lastname]
     );
     return result.rows[0];
 };
