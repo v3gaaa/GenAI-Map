@@ -4,7 +4,8 @@
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.16",
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "pg": "^8.11.5"
   },
   "devDependencies": {
     "sass": "^1.76.0"
