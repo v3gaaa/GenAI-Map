@@ -4,11 +4,8 @@ import React, { useState } from "react";
 const Courses = () => {
 
     const [form, setForm] = useState({
-        username: "",
         email: "",
         password: "",
-        firstname: "",
-        lastname: ""
       });
     
       const handleOnChange = (e) => {
@@ -22,23 +19,10 @@ const Courses = () => {
         setForm(newValues);
       };
     
-      const handleSignUp = async (e) => {
-        e.preventDefault();
-        try {
-          const res = await fetch('http://localhost:8000/api/users/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(form),
-          });
-          return res.status === 200
-            ? alert('Registro exitoso')
-            : alert('Error al registrar');
-        } catch (error) {
-          alert('Error al registrar');
-          throw new Error('Error al registrar');
-        }
+      const handleLogin = async () => {
+        const code = await getDataAuth();
+        console.log(code);
+        authFLow(code);
       };
 
     return (
@@ -74,21 +58,6 @@ const Courses = () => {
             <p className="text-md md:text-xl text-white">Log in into your account</p>
           </div>
           <div className="flex flex-col max-w-md space-y-5">
-            <input id="firstname" name="firstname" type="firstname" autoComplete="firstname" placeholder="Name"
-                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
-                onChange={handleOnChange}
-                value={form.firstname}
-            />
-            <input id="lastname" name="lastname" type="lastname" autoComplete="lastname" placeholder="Last name"
-                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
-                onChange={handleOnChange}
-                value={form.lastname}
-            />
-            <input id="username" name="username" type="username" autoComplete="username" placeholder="Username"
-                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
-                onChange={handleOnChange}
-                value={form.username}
-            />
             <input id="email" name="email" type="email" autoComplete="email" placeholder="Email or username"
               className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
               onChange={handleOnChange}
@@ -101,7 +70,7 @@ const Courses = () => {
             />
             <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-white bg-black text-white"
             type="button"
-            onClick={handleSignUp}
+            onClick={handleLogin}
             >Sign in</button>
           </div>
         </div>
