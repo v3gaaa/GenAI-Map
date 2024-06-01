@@ -2,7 +2,7 @@ import PlanetContainer from "../planetcomponents/PlanetContainer";
 import SunContainer from "../planetcomponents/SunContainer";
 import Planet2Container from "../planetcomponents/Planet2Container";
 
-const Home = () => {
+const Home = ({ setContent }) => {
   const categories = [
     "Image",
     "Text",
@@ -16,11 +16,11 @@ const Home = () => {
 
   const surfaces = [
     "p1.jpg",
-    "p2.jpg",
+    "p5.jpg",
     "p3.jpg",
     "p4.jpg",
     "terrazo.png",
-    "p5.jpg",
+    "p2.jpg",
     "p6.jpg",
     "p7.jpg",
     "p8.jpg",

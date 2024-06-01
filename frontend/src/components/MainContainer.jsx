@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./../components/transition.css";
 
@@ -6,13 +6,14 @@ import Home from "./menucomponents/Home";
 import Category from "./menucomponents/Category";
 import LLM from "./menucomponents/LLM";
 import Courses from "./menucomponents/Courses";
+import Lista from "./ListAIs/Lista";
 
-const MainContainer = ({ content }) => {
+const MainContainer = ({ content, setContent }) => {
   return (
     <>
       <div className="w-full h-full flex items-center justify-center">
         {content == "home" ? (
-          <Home />
+          <Home setContent={setContent} />
         ) : content == "category" ? (
           <Category />
         ) : content === "llm" ? (
@@ -22,6 +23,7 @@ const MainContainer = ({ content }) => {
         ) : (
           <Home />
         )}
+
         {/* <CSSTransition
           in={content === "home"}
           timeout={900}
