@@ -1,13 +1,13 @@
-require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 // Se importa la configuración de la base de datos
-const db = require('./config/db');
+const db = require("./config/db");
 
 // Se importan las rutas
-const routes = require('./routes');
+const routes = require("./routes");
 
 // Inicio de la aplicación
 const app = express();
@@ -19,8 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Uso de las rutas
-app.use('/api', routes);
+app.use("/api", routes);
 
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
