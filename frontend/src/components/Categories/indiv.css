@@ -1,6 +1,6 @@
   .main-container{
     display: flex;
-    min-height: 80%;
+    min-height: 90%;
     width: 100%;
     max-width: 100%;
     min-width: 100%;
@@ -32,7 +32,7 @@
   .container-down{
     display: flex;
     min-height: 50%;
-    max-height: 50%;
+    height: 30rem;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -46,39 +46,25 @@
   }
   
   .down-1{
-    width: 20%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
   }
   
-  .down-2{
-    width: 60%;
+  .downn-2{
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: -40%;
   }
   
   .down-3{
-    width: 20%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
   }
-  
-  .down-1-in{
-    width: 100%;
-    height: 80%;
-    margin-left: -100%;
-  }
-  
-  .down-3-in{
-    width: 100%;
-    height: 80%;
-    margin-right: -100%;
-  }
-  
