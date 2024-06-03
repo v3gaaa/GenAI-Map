@@ -2,7 +2,7 @@ import PlanetContainer from "../planetcomponents/PlanetContainer";
 import SunContainer from "../planetcomponents/SunContainer";
 import Planet2Container from "../planetcomponents/Planet2Container";
 
-const Home = ({ setContent }) => {
+const Home = ({ setContent, setCate }) => {
   const categories = [
     "Image",
     "Text",
@@ -56,6 +56,8 @@ const Home = ({ setContent }) => {
               surface={surfaces[0]}
               name={categories[0]}
               shacolor={"#9a326e"}
+              setContent={setContent}
+              setCate={setCate}
             />
             {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -66,6 +68,8 @@ const Home = ({ setContent }) => {
               surface={surfaces[1]}
               name={categories[1]}
               shacolor={"#b97a94"}
+              setContent={setContent}
+              setCate={setCate}
             />
             {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -77,6 +81,8 @@ const Home = ({ setContent }) => {
               surface={surfaces[2]}
               name={categories[2]}
               shacolor={"#b97a94"}
+              setContent={setContent}
+              setCate={setCate}
             />
             {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -87,6 +93,8 @@ const Home = ({ setContent }) => {
               surface={surfaces[3]}
               name={categories[3]}
               shacolor={"#b97a94"}
+              setContent={setContent}
+              setCate={setCate}
             />
             {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -111,6 +119,8 @@ const Home = ({ setContent }) => {
               surface={surfaces[4]}
               name={categories[4]}
               shacolor={"#9a326e"}
+              setContent={setContent}
+              setCate={setCate}
             />
             {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -121,6 +131,8 @@ const Home = ({ setContent }) => {
               surface={surfaces[5]}
               name={categories[5]}
               shacolor={"#b97a94"}
+              setContent={setContent}
+              setCate={setCate}
             />
             {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -132,6 +144,8 @@ const Home = ({ setContent }) => {
               surface={surfaces[6]}
               name={categories[6]}
               shacolor={"#b97a94"}
+              setContent={setContent}
+              setCate={setCate}
             />
             {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -142,6 +156,8 @@ const Home = ({ setContent }) => {
               surface={surfaces[7]}
               name={categories[7]}
               shacolor={"#b97a94"}
+              setContent={setContent}
+              setCate={setCate}
             />
             {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet

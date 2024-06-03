@@ -9,13 +9,14 @@ import Courses from "./menucomponents/Courses";
 import Lista from "./ListAIs/Lista";
 
 const MainContainer = ({ content, setContent }) => {
+  const [cate, setCate] = useState("Text");
   return (
     <>
       <div className="w-full h-full flex items-center justify-center">
         {content == "home" ? (
-          <Home setContent={setContent} />
+          <Home setContent={setContent} setCate={setCate} />
         ) : content == "category" ? (
-          <Category />
+          <Category cate={cate} />
         ) : content === "llm" ? (
           <LLM />
         ) : content === "courses" ? (
