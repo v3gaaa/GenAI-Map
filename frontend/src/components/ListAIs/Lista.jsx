@@ -5,7 +5,7 @@ import noImage from "../../assets/noImage.png";
 import downloadImg from "../../assets/download.svg";
 import Planet from "../planetcomponents/Planet";
 
-const Lista = () => {
+const Lista = ({ category }) => {
   const [hovered, setHovered] = useState(null);
   const [AIs, setAIs] = useState([]);
   const fetchAIs = async () => {
@@ -119,7 +119,7 @@ const Lista = () => {
             <Planet surface={"p5.jpg"} />
           </div>
           {/* <Planet surface={"p1.jpg"} /> */}
-          <p>Category : TEXT</p>
+          <p>{category}</p>
         </div>
         <div className="flex justify-start w-11/12 place-self-center text-center text-white">
           <p
@@ -168,7 +168,7 @@ const Lista = () => {
                 <img
                   src={star}
                   alt="star"
-                  className="h-full aspect-square ml-2"
+                  className="h-2/3 aspect-square ml-2"
                 />
               </div>
               <div className="h-full w-1/12 rounded-full flex flex-row justify-end items-center  ">
@@ -176,7 +176,7 @@ const Lista = () => {
                 <img
                   src={downloadImg}
                   alt="star"
-                  className="h-5/6 aspect-square ml-2 mr-1"
+                  className="h-2/3 aspect-square ml-2 mr-1"
                 />
               </div>
             </div>

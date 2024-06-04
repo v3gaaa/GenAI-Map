@@ -1,0 +1,116 @@
+.toggle-button-cover {
+  display: table-cell;
+  position: relative;
+  width: 90%;
+  height: 90%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.button-cover {
+  height: 100%;
+  box-shadow: 0 10px 20px -8px #c5d6d6;
+  display: flex;
+  justify-content: center;
+}
+
+.button-cover,
+.knobs,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.button {
+  position: relative;
+  justify-self: center;
+  top: 0%;
+  width: 100%;
+  height: 90%;
+  overflow: hidden;
+}
+
+.button.r,
+.button.r .layer {
+  border-radius: 50px;
+}
+
+.button.b2 {
+  border-radius: 2px;
+}
+
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.knobs {
+  z-index: 2;
+}
+
+.layer {
+  width: 100%;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+#button-10 .knobs:before,
+#button-10 .knobs:after,
+#button-10 .knobs span {
+  position: absolute;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 0px;
+  width: auto;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  font-size: 60%;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  border-radius: 100%;
+  transition: 0.3s ease all;
+}
+
+#button-10 .knobs:before {
+  content: "";
+  left: 1px;
+  background-color: #1b0733;
+}
+
+#button-10 .knobs:after {
+  content: "Carr ";
+  right: 0px;
+  color: #4e4e4e;
+}
+
+#button-10 .knobs span {
+  display: flex;
+  align-items: center;
+  left: 2px;
+  color: #fff;
+  z-index: 1;
+}
+
+#button-10 .checkbox:checked + .knobs span {
+  color: #4e4e4e;
+}
+
+#button-10 .checkbox:checked + .knobs:before {
+  left: 65%;
+  background-color: #1b0733;
+}
+
+#button-10 .checkbox:checked + .knobs:after {
+  color: #fff;
+}
