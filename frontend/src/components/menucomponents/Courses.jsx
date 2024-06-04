@@ -79,36 +79,47 @@ const Courses = () => {
 
         <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
           <div className="flex flex-col space-y-2 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Welcome back!</h2>
-            <p className="text-md md:text-xl text-white">Log in into your account</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Try AI Universe!</h2>
+            <p className="text-md md:text-xl text-white">Create your account</p>
           </div>
           <div className="flex flex-col max-w-md space-y-5">
-            <input id="firstname" name="firstname" type="firstname" autoComplete="firstname" placeholder="Name"
-                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
-                onChange={handleOnChange}
-                value={form.firstname}
-            />
-            <input id="lastname" name="lastname" type="lastname" autoComplete="lastname" placeholder="Last name"
-                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
-                onChange={handleOnChange}
-                value={form.lastname}
-            />
+            <div className="flex flex-row">
+              <div className="w-1/2">
+                <div className="mr-2">
+                  <input id="firstname" name="firstname" type="firstname" autoComplete="name" placeholder="Name"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal w-full bg-[#0C0618] text-white"
+                    onChange={handleOnChange}
+                    value={form.firstname}
+                  />
+                </div>
+              </div>
+              <div className="w-1/2">
+                <div className="ml-2">
+                  <input id="lastname" name="lastname" type="lastname" autoComplete="lastname" placeholder="Last name"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal w-full bg-[#0C0618] text-white"
+                    onChange={handleOnChange}
+                    value={form.lastname}
+                  />
+                </div>
+              </div>
+            </div>
+            
             <input id="username" name="username" type="username" autoComplete="username" placeholder="Username"
-                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
+                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal bg-[#0C0618] text-white"
                 onChange={handleOnChange}
                 value={form.username}
             />
-            <input id="email" name="email" type="email" autoComplete="email" placeholder="Email or username"
-              className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
+            <input id="email" name="email" type="email" autoComplete="email" placeholder="Email"
+              className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal bg-[#0C0618] text-white"
               onChange={handleOnChange}
               value={form.email}
             />
             <input id="password" name="password" type="password" autoComplete="current-password" placeholder="Password"
-              className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-green rounded-lg font-medium placeholder:font-normal"
+              className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-green rounded-lg font-medium placeholder:font-normal bg-[#0C0618] text-white"
               onChange={handleOnChange}
               value={form.password}  
             />
-            <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-white bg-black text-white"
+            <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-white bg-white text-black hover:border-green-500"
             type="button"
             onClick={handleSignUp}
             >Sign in</button>
