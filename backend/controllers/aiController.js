@@ -1,4 +1,3 @@
-// controllers/aiController.js
 const AIModel = require('../models/ai');
 
 const getAllAIs = async (req, res) => {
