@@ -53,7 +53,7 @@ const MenuBar = () => {
           Cursos
         </div>
       </div>
-      <MainContainer content={content} />
+      <MainContainer content={content} setContent={setContent} />
     </>
   );
 };
