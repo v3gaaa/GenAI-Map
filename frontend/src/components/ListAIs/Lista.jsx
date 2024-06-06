@@ -5,9 +5,13 @@ import noImage from "../../assets/noImage.png";
 import downloadImg from "../../assets/download.svg";
 import Planet from "../planetcomponents/Planet";
 
-const Lista = ({ category }) => {
+const Lista = ({ category , setContent}) => {
   const [hovered, setHovered] = useState(null);
   const [AIs, setAIs] = useState([]);
+
+  const handleIa = () => {
+    setContent("llm");
+  }
   const fetchAIs = async () => {
     const response = await fetch("http://localhost:8000/api/ais");
     const data = await response.json();
@@ -148,6 +152,7 @@ const Lista = ({ category }) => {
               onMouseLeave={() => {
                 setHovered(null);
               }}
+              onClick={handleIa}
             >
               <div className="h-full w-auto aspect-square rounded-full flex justify-center mx-1">
                 {hovered === idx ? (
