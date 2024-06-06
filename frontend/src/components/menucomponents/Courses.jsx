@@ -122,7 +122,7 @@ const Courses = () => {
             <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-white bg-white text-black hover:border-green-500"
             type="button"
             onClick={handleSignUp}
-            >Sign in</button>
+            >Sign up</button>
           </div>
         </div>
 
