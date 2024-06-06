@@ -5,7 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import Lista from "../ListAIs/Lista";
 import ToggleBut from "../Categories/ToggleBut";
 
-const Category = ({ cate }) => {
+const Category = ({ cate, setContent }) => {
   const [list, setList] = useState(true);
   console.log(cate);
   const handleClick = () => {
@@ -17,7 +17,7 @@ const Category = ({ cate }) => {
       <div className="flex flex-col h-lvh w-full items-center justify-around pb-0 relative">
         <ToggleBut setList={handleClick} />
         {list ? (
-          <Lista category={cate} />
+          <Lista category={cate} setContent={setContent} />
         ) : (
           <Categories text="Launch" href="www.google.com" Category={cate} />
         )}

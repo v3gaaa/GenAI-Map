@@ -1,18 +1,18 @@
 // routes/index.js
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const testdbRoutes = require('./testdb');
-const aiRoutes = require('./ai');
-const userRoutes = require('./user');
-const userAIsRoutes = require('./userAIs');
+const testdbRoutes = require("./testdb");
+const aiRoutes = require("./ai");
+const userRoutes = require("./user");
+const userAIsRoutes = require("./userAIs");
 
-router.use('/testdb', testdbRoutes);
-router.use('/ais', aiRoutes);
-router.use('/users', userRoutes);
-router.use('/userAIs', userAIsRoutes);
+router.use("/testdb", testdbRoutes);
+router.use("/ais", aiRoutes);
+router.use("/users", userRoutes);
+router.use("/userAIs", userAIsRoutes);
 
 router.get("/", (req, res) => {
-    res.json({ message: "API funcionando correctamente" });
+  res.json({ message: "API funcionando correctamente" });
 });
 
 module.exports = router;

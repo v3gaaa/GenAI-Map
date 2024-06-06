@@ -28,14 +28,14 @@ const slides = [
   // Agrega más objetos aquí para más slides
 ];
 
-const Indiv = ({ Category }) => {
+const Indiv = ({ ai, setContent }) => {
   return (
     <>
       <div className="main-container z-0">
         <div className="container-up">
           <div className="up-1">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png" />
-            <h1 className="text-6xl text-white pb-5">{Category}</h1>
+            <h1 className="text-6xl text-white pb-5">{ai.name}</h1>
           </div>
           <div>
             <p className="text-l text-white pb-5">
