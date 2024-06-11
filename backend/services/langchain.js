@@ -8,6 +8,21 @@ const { PromptTemplate } = require('@langchain/core/prompts');
 const { StringOutputParser } = require('@langchain/core/output_parsers');
 const { RunnablePassthrough, RunnableSequence } = require('@langchain/core/runnables');
 
+// Envolver console.log para capturar el último valor logueado
+(function() {
+  var originalLog = console.log;
+  var lastLog;
+
+  console.log = function() {
+    lastLog = Array.from(arguments).join(' ');
+    originalLog.apply(console, arguments);
+  };
+
+  console.getLastLog = function() {
+    return lastLog;
+  };
+})();
+
 const datasource = new DataSource({
   type: 'postgres',
   host: process.env.DB_HOST,
@@ -19,6 +34,8 @@ const datasource = new DataSource({
     rejectUnauthorized: false,
   },
 });
+
+let lastSqlQuery = '';
 
 const setupLangChain = async () => {
   const db = await SqlDatabase.fromDataSourceParams({
@@ -37,17 +54,25 @@ const setupLangChain = async () => {
     dialect: 'postgres',
   });
 
-  const answerPrompt = PromptTemplate.fromTemplate(`Given the following user question, corresponding SQL query, and SQL result, answer the user question.
+  const answerPrompt = PromptTemplate.fromTemplate(`Given the following user question, generate a SQL query that finds the info that the user wants, execute the query, and return the results (The query should always start with=(SELECT "id",). The user is not aware of SQL or technical details, so provide a concise and user-friendly description of the results. Start with a general overview (summary), followed by why they are good (Based on the description that each AI has). Dont tell the user anything about databases is super important you give the user relevant info only. Be an assistant
 
-Question: {question}
-SQL Query: {query}
-SQL Result: {result}
-Answer: `);
+  User's Question: {question}
+  SQL Query: {query}
+  SQL Result: {result}
+  Answer:
 
+  Summary: Provide a general summary of the results.`);
+  
+  const answerQuery = await answerPrompt.pipe(llm).pipe(new StringOutputParser());
+  
   const answerChain = answerPrompt.pipe(llm).pipe(new StringOutputParser());
 
   const chain = RunnableSequence.from([
     RunnablePassthrough.assign({ query: writeQuery }).assign({
+      console: (i) => {
+        lastSqlQuery = i.query;
+        console.log(i.query);
+      },
       result: (i) => executeQuery.invoke(i.query),
     }),
     answerChain,
@@ -56,4 +81,6 @@ Answer: `);
   return chain;
 };
 
-module.exports = { setupLangChain };
+const getLastSqlQuery = () => lastSqlQuery;
+
+module.exports = { setupLangChain, getLastSqlQuery };

@@ -22,6 +22,19 @@ const getAIById = async (req, res) => {
     }
 };
 
+const getAIByName = async (req, res) => {
+    try {
+        const ai = await AIModel.getAIByName(req.params.name);
+        if (ai) {
+            res.json(ai);
+        } else {
+            res.status(404).json({ message: 'AI not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 const getAIsByCategory = async (req, res) => {
     try {
         const ais = await AIModel.getAIsByCategory(req.params.category);
@@ -65,6 +78,7 @@ const deleteAI = async (req, res) => {
 module.exports = {
     getAllAIs,
     getAIById,
+    getAIByName,
     getAIsByCategory,
     createAI,
     updateAI,
