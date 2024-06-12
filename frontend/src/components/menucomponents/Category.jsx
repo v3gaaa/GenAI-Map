@@ -17,7 +17,7 @@ const Category = ({ cate, setContent }) => {
       <div className="flex flex-col h-lvh w-full items-center justify-around pb-0 relative">
         <ToggleBut setList={handleClick} />
         {list ? (
-          <Lista category={cate} setContent={setContent}/>
+          <Lista category={cate} setContent={setContent} />
         ) : (
           <Categories text="Launch" href="www.google.com" Category={cate} />
         )}

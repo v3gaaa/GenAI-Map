@@ -16,7 +16,8 @@ const MainContainer = ({ content, setContent }) => {
         {content == "home" ? (
           <Home setContent={setContent} setCate={setCate} />
         ) : content == "category" ? (
-          <Category cate={cate} setContent={setContent}/>
+          <Category cate={cate} setContent={setContent} />
+
         ) : content === "llm" ? (
           <LLM />
         ) : content === "courses" ? (
