@@ -10,6 +10,12 @@ const getAIById = async (id) => {
   return result.rows[0];
 };
 
+const getAIByName = async (name) => {
+    const result = await db.query("SELECT * FROM AIs WHERE name = $1", [name]);
+    return result.rows[0];
+};
+
+
 const getAIsByCategory = async (category) => {
   const result = await db.query("SELECT * FROM AIs WHERE category = $1", [
     category,
@@ -40,6 +46,7 @@ const deleteAI = async (id) => {
 module.exports = {
   getAllAIs,
   getAIById,
+  getAIByName,
   getAIsByCategory,
   createAI,
   updateAI,

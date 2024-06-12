@@ -5,10 +5,13 @@ import noImage from "../../assets/noImage.png";
 import downloadImg from "../../assets/download.svg";
 import Planet from "../planetcomponents/Planet";
 
+
 const Lista = ({ category, setContent }) => {
+
   const [hovered, setHovered] = useState(null);
   const [cat, setCat] = useState(category);
   const [AIs, setAIs] = useState([]);
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const categories = [
@@ -119,7 +122,9 @@ const Lista = ({ category, setContent }) => {
               onMouseLeave={() => {
                 setHovered(null);
               }}
+
               onClick={() => handleAISelected(ia)}
+
             >
               <div className="h-full w-auto aspect-square rounded-full flex justify-center mx-1 z-10">
                 {hovered === idx ? (
