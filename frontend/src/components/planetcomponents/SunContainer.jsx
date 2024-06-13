@@ -1,13 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Planet from "./Planet";
 import "./SunContainer.css";
+import { json } from "react-router-dom";
+import load from "../../assets/loading.gif";
 
 const SunContainer = ({ surface }) => {
+  const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
   const inputRef = useRef(null);
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState({ prompt: "" });
+  const [aisPrompt, setAisPrompt] = useState([]);
+  const [descripPrompt, setDescripPrompt] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleMouseEnter = () => {
     setHovered(true);
@@ -28,7 +35,38 @@ const SunContainer = ({ surface }) => {
   };
 
   const handlePrompt = (e) => {
-    setPrompt(e.target.value);
+    const newPrompt = {
+      ...prompt,
+      [e.target.name]: e.target.value,
+    };
+    setPrompt(newPrompt);
+    console.log(newPrompt);
+  };
+
+  const fetchPrompt = async () => {
+    console.log(prompt);
+    setLoading(true);
+    try {
+      const res = await fetch("http://localhost:8000/api/recommendations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(prompt),
+      });
+      setLoading(false);
+      alert("Prompt exitoso");
+      const jsonresponse = await res.json();
+      const aisResult = jsonresponse.queryResult;
+      const descriptionPrompt = jsonresponse.response;
+      const names = aisResult.map((ai) => ai.name);
+      setAisPrompt(names);
+      setDescripPrompt(descriptionPrompt);
+      navigate("/promptais", { state: { names, descriptionPrompt } });
+    } catch (error) {
+      alert("Error en el prompt");
+      throw new Error("Error en el prompt");
+    }
   };
 
   useEffect(() => {
@@ -74,17 +112,20 @@ const SunContainer = ({ surface }) => {
             style={{ fontSize: "0.7rem", opacity: hovered || clicked ? 1 : 0 }}
             onClick={() => handleClick(true)}
             name="prompt"
-            value={prompt}
             onChange={handlePrompt}
             placeholder="Prompt your idea here..."
             onKeyUp={(e) => {
               if (e.key === "Enter") {
-                console.log(prompt);
-                setPrompt("");
+                fetchPrompt();
               }
             }}
           />
         </div>
+        {loading ? (
+          <img src={load} className="absolute z-10 w-1/2 left-1/4" />
+        ) : (
+          console.log(loading)
+        )}
       </div>
     </>
   );

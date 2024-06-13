@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import noImage from "../../assets/noImage.png";
 import downloadImg from "../../assets/download.svg";
 import Planet from "../planetcomponents/Planet";
-import { div } from "three/examples/jsm/nodes/Nodes.js";
 
 const Lista = ({ AIs, category, setCategory, loading }) => {
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
-const { setupLangChain, getLastSqlQuery } = require('../services/langchain');
-const db = require('../config/db');
+const { setupLangChain, getLastSqlQuery } = require("../services/langchain");
+const db = require("../config/db");
 
 const getRecommendations = async (req, res) => {
   const { prompt } = req.body;
@@ -18,7 +18,6 @@ const getRecommendations = async (req, res) => {
       response: result,
       queryResult: queryResult.rows, // Asumiendo que quieres los resultados de la consulta en formato de filas
     });
-
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

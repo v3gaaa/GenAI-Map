@@ -4,7 +4,7 @@ const RocketButton = ({ text, cat, ai }) => {
   const navigate = useNavigate();
   const handleRocketUrl = (category) => {
     if (text == "Back") {
-      navigate("/category", { state: { category: category } });
+      navigate(-1, { state: { category: category } });
     } else if (text == "Ver más") {
       navigate("/ai", { state: { ai: ai } });
     } else if (text === "Visitar Sitio") {

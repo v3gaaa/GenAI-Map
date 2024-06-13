@@ -10,6 +10,7 @@ import AIShown from "./components/ListAIs/AIShown";
 import Home from "./components/menucomponents/Home";
 import Category from "./components/menucomponents/Category";
 import LLM from "./components/menucomponents/LLM";
+import PromptAIs from "./components/ListAIs/PromptAIs";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/ai" element={<AIShown />}></Route>
         <Route path="/llm" element={<LLM />}></Route>
+        <Route path="/promptais" element={<PromptAIs />}></Route>
       </Routes>
     </>
   );
