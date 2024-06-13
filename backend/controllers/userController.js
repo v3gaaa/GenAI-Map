@@ -22,6 +22,32 @@ const getUserById = async (req, res) => {
     }
 };
 
+const getUserByUsername = async (req, res) => {
+    try {
+        const user = await UserModel.getUserByUsername(req.params.username);
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+const getUserByEmail = async (req, res) => {
+    try {
+        const user = await UserModel.getUserByEmail(req.params.email);
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 const createUser = async (req, res) => {
     try {
         const newUser = await UserModel.createUser(req.body);
@@ -56,6 +82,8 @@ const deleteUser = async (req, res) => {
 module.exports = {
     getAllUsers,
     getUserById,
+    getUserByUsername,
+    getUserByEmail,
     createUser,
     updateUser,
     deleteUser,

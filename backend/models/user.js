@@ -10,6 +10,16 @@ const getUserById = async (id) => {
     return result.rows[0];
 };
 
+const getUserByUsername = async (username) => {
+    const result = await db.query('SELECT * FROM usuarios WHERE username = $1', [username]);
+    return result.rows[0];
+}
+
+const getUserByEmail = async (email) => {
+    const result = await db.query('SELECT * FROM usuarios WHERE email = $1', [email]);
+    return result.rows[0];
+}
+
 const createUser = async (user) => {
     const result = await db.query(
         'INSERT INTO usuarios (username, email, password, created_at, updated_at, firstname, lastname) VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, $4, $5) RETURNING *',
@@ -33,6 +43,8 @@ const deleteUser = async (id) => {
 module.exports = {
     getAllUsers,
     getUserById,
+    getUserByUsername,
+    getUserByEmail,
     createUser,
     updateUser,
     deleteUser,
