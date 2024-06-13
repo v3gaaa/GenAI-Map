@@ -1,12 +1,18 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import "./MenuBar.css";
 import MainContainer from "./MainContainer";
+import { arrayBuffer } from "three/examples/jsm/nodes/Nodes.js";
 
-const MenuBar = () => {
-  const [content, setContent] = useState("home");
-  const setCategory = (cat) => {
-    setContent(cat);
+const MenuBar = ({ children }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (value) => {
+    if (value == "category") {
+      navigate("/category", { state: { category: "Image" } });
+    } else {
+      navigate(`/${value}`);
+    }
   };
   const styleButton =
     "w-1/6 h-1/2 flex items-center justify-center transition transform hover:-translate-y-1 hover:scale-110 mt-2 cursor-pointer md:text-xs lg:text-sm xl:text-base";
@@ -20,7 +26,7 @@ const MenuBar = () => {
         <div
           className={styleButton}
           onClick={() => {
-            setCategory("home");
+            handleNavigate("home");
           }}
         >
           Home
@@ -28,7 +34,7 @@ const MenuBar = () => {
         <div
           className={styleButton}
           onClick={() => {
-            setCategory("category");
+            handleNavigate("category");
           }}
         >
           Categorias
@@ -39,7 +45,7 @@ const MenuBar = () => {
         <div
           className={styleButton}
           onClick={() => {
-            setCategory("llm");
+            handleNavigate("llm");
           }}
         >
           LLM
@@ -47,13 +53,13 @@ const MenuBar = () => {
         <div
           className={styleButton}
           onClick={() => {
-            setCategory("courses");
+            handleNavigate("courses");
           }}
         >
           Cursos
         </div>
       </div>
-      <MainContainer content={content} setContent={setContent} />
+      {children}
     </>
   );
 };

@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import PlanetContainer from "../planetcomponents/PlanetContainer";
 import SunContainer from "../planetcomponents/SunContainer";
 import Planet2Container from "../planetcomponents/Planet2Container";
+import MenuBar from "../MenuBar";
 
-const Home = ({ setContent, setCate }) => {
+const Home = () => {
+  const navigate = useNavigate();
+
   const categories = [
     "Image",
     "Text",
@@ -11,7 +16,7 @@ const Home = ({ setContent, setCate }) => {
     "Code Generator",
     "Data",
     "Game",
-    "Vector database",
+    "Vector",
   ];
 
   const surfaces = [
@@ -28,143 +33,131 @@ const Home = ({ setContent, setCate }) => {
   ];
   return (
     <>
-      <svg
-        viewBox="0 0 150 100"
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute top-0 left-0 h-full w-full stroke-gray-700 fill-none"
-        strokeWidth="0.03"
-      >
-        <ellipse cx="50%" cy="33%" rx="20%" ry="15%" />
-        <ellipse cx="50%" cy="34%" rx="25%" ry="22%" />
-        <ellipse cx="50%" cy="34%" rx="30%" ry="28%" />
-        <ellipse cx="50%" cy="36%" rx="35%" ry="34%" />
-        <ellipse cx="50%" cy="40%" rx="40%" ry="40%" />
-        <ellipse cx="50%" cy="44%" rx="45%" ry="45%" />
-        <ellipse cx="50%" cy="46%" rx="50%" ry="48%" />
-      </svg>
+      <MenuBar>
+        <div className="w-full h-full flex items-center justify-center">
+          <svg
+            viewBox="0 0 150 100"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute top-0 left-0 h-full w-full stroke-gray-700 fill-none"
+            strokeWidth="0.03"
+          >
+            <ellipse cx="50%" cy="33%" rx="20%" ry="15%" />
+            <ellipse cx="50%" cy="34%" rx="25%" ry="22%" />
+            <ellipse cx="50%" cy="34%" rx="30%" ry="28%" />
+            <ellipse cx="50%" cy="36%" rx="35%" ry="34%" />
+            <ellipse cx="50%" cy="40%" rx="40%" ry="40%" />
+            <ellipse cx="50%" cy="44%" rx="45%" ry="45%" />
+            <ellipse cx="50%" cy="46%" rx="50%" ry="48%" />
+          </svg>
 
-      <Planet2Container />
+          <Planet2Container />
 
-      <div className="absolute w-full h-full flex items-center justify-center relative flex-row">
-        <div className="absolute w-full h-full"></div>
-        <div
-          id="left-container"
-          className="h-full w-1/3 flex items-end justify-start relative flex-col text-center"
-        >
-          <div className="h-1/5 w-2/3 flex items-center justify-end text-white">
-            <PlanetContainer
-              surface={surfaces[0]}
-              name={categories[0]}
-              shacolor={"#9a326e"}
-              setContent={setContent}
-              setCate={setCate}
-            />
-            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+          <div className="absolute w-full h-full flex items-center justify-center relative flex-row">
+            <div className="absolute w-full h-full"></div>
+            <div
+              id="left-container"
+              className="h-full w-1/3 flex items-end justify-start relative flex-col text-center"
+            >
+              <div className="h-1/5 w-2/3 flex items-center justify-end text-white">
+                <PlanetContainer
+                  surface={surfaces[0]}
+                  name={categories[0]}
+                  shacolor={"#9a326e"}
+                />
+                {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
-          </div>
-          <div className="h-1/5 w-2/3 flex items-start justify-start text-white mb-10">
-            <PlanetContainer
-              surface={surfaces[1]}
-              name={categories[1]}
-              shacolor={"#b97a94"}
-              setContent={setContent}
-              setCate={setCate}
-            />
-            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              </div>
+              <div className="h-1/5 w-2/3 flex items-start justify-start text-white mb-10">
+                <PlanetContainer
+                  surface={surfaces[1]}
+                  name={categories[1]}
+                  shacolor={"#b97a94"}
+                />
+                {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
-          </div>
-          <div className="h-2/12"></div>
-          <div className="h-1/5 w-2/3 flex items-start justify-start text-white">
-            <PlanetContainer
-              surface={surfaces[2]}
-              name={categories[2]}
-              shacolor={"#b97a94"}
-              setContent={setContent}
-              setCate={setCate}
-            />
-            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              </div>
+              <div className="h-2/12"></div>
+              <div className="h-1/5 w-2/3 flex items-start justify-start text-white">
+                <PlanetContainer
+                  surface={surfaces[2]}
+                  name={categories[2]}
+                  shacolor={"#b97a94"}
+                />
+                {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
-          </div>
-          <div className="h-1/5 w-2/3 flex items-start justify-end text-white">
-            <PlanetContainer
-              surface={surfaces[3]}
-              name={categories[3]}
-              shacolor={"#b97a94"}
-              setContent={setContent}
-              setCate={setCate}
-            />
-            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              </div>
+              <div className="h-1/5 w-2/3 flex items-start justify-end text-white">
+                <PlanetContainer
+                  surface={surfaces[3]}
+                  name={categories[3]}
+                  shacolor={"#b97a94"}
+                />
+                {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
-          </div>
-        </div>
-        <div
-          id="sun-container"
-          className="h-full w-1/3 flex items-center justify-center relative"
-        >
-          <SunContainer surface={"sun.jpg"} />
-          {/* <div className="absolute top-1/3 w-full h-max flex transition transform items-center justify-center text-white">
+              </div>
+            </div>
+            <div
+              id="sun-container"
+              className="h-full w-1/3 flex items-center justify-center relative"
+            >
+              <SunContainer surface={"sun.jpg"} />
+              {/* <div className="absolute top-1/3 w-full h-max flex transition transform items-center justify-center text-white">
             Sun
           </div> */}
-        </div>
-        <div
-          id="right-container"
-          className="h-full w-1/3 flex items-start justify-start relative flex-col text-center"
-        >
-          <div className="h-1/5 w-2/3 flex items-center justify-start text-white">
-            <PlanetContainer
-              surface={surfaces[4]}
-              name={categories[4]}
-              shacolor={"#9a326e"}
-              setContent={setContent}
-              setCate={setCate}
-            />
-            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+            </div>
+            <div
+              id="right-container"
+              className="h-full w-1/3 flex items-start justify-start relative flex-col text-center"
+            >
+              <div className="h-1/5 w-2/3 flex items-center justify-start text-white">
+                <PlanetContainer
+                  surface={surfaces[4]}
+                  name={categories[4]}
+                  shacolor={"#9a326e"}
+                />
+                {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
-          </div>
-          <div className="h-1/5 w-2/3 flex items-start justify-end text-white mb-10">
-            <PlanetContainer
-              surface={surfaces[5]}
-              name={categories[5]}
-              shacolor={"#b97a94"}
-              setContent={setContent}
-              setCate={setCate}
-            />
-            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              </div>
+              <div className="h-1/5 w-2/3 flex items-start justify-end text-white mb-10">
+                <PlanetContainer
+                  surface={surfaces[5]}
+                  name={categories[5]}
+                  shacolor={"#b97a94"}
+                />
+                {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
-          </div>
-          <div className="h-2/12"></div>
-          <div className="h-1/5 w-2/3 flex items-start justify-end text-white">
-            <PlanetContainer
-              surface={surfaces[6]}
-              name={categories[6]}
-              shacolor={"#b97a94"}
-              setContent={setContent}
-              setCate={setCate}
-            />
-            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              </div>
+              <div className="h-2/12"></div>
+              <div className="h-1/5 w-2/3 flex items-start justify-end text-white">
+                <PlanetContainer
+                  surface={surfaces[6]}
+                  name={categories[6]}
+                  shacolor={"#b97a94"}
+                />
+                {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
-          </div>
-          <div className="h-1/5 w-2/3 flex items-start justify-start text-white">
-            <PlanetContainer
-              surface={surfaces[7]}
-              name={categories[7]}
-              shacolor={"#b97a94"}
-              setContent={setContent}
-              setCate={setCate}
-            />
-            {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
+              </div>
+              <div className="h-1/5 w-2/3 flex items-start justify-start text-white">
+                <PlanetContainer
+                  surface={surfaces[7]}
+                  name={categories[7]}
+                  shacolor={"#b97a94"}
+                />
+                {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
             </div> */}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </MenuBar>
     </>
   );
 };
