@@ -11,6 +11,7 @@ import Home from "./components/menucomponents/Home";
 import Category from "./components/menucomponents/Category";
 import LLM from "./components/menucomponents/LLM";
 import PromptAIs from "./components/ListAIs/PromptAIs";
+import SignIn from "./components/register/SignIn";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/ai" element={<AIShown />}></Route>
         <Route path="/llm" element={<LLM />}></Route>
         <Route path="/promptais" element={<PromptAIs />}></Route>
+        <Route path="/signin" element={<SignIn />}></Route>
       </Routes>
     </>
   );
