@@ -62,7 +62,7 @@ const Home = () => {
                 <PlanetContainer
                   surface={surfaces[0]}
                   name={categories[0]}
-                  shacolor={"#9a326e"}
+                  shacolor={"#C13F23"}
                 />
                 {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -72,7 +72,7 @@ const Home = () => {
                 <PlanetContainer
                   surface={surfaces[1]}
                   name={categories[1]}
-                  shacolor={"#b97a94"}
+                  shacolor={"#5EA0F0"}
                 />
                 {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -83,7 +83,7 @@ const Home = () => {
                 <PlanetContainer
                   surface={surfaces[2]}
                   name={categories[2]}
-                  shacolor={"#b97a94"}
+                  shacolor={"#224F86"}
                 />
                 {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -93,7 +93,7 @@ const Home = () => {
                 <PlanetContainer
                   surface={surfaces[3]}
                   name={categories[3]}
-                  shacolor={"#b97a94"}
+                  shacolor={"#83A2C9"}
                 />
                 {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -117,7 +117,7 @@ const Home = () => {
                 <PlanetContainer
                   surface={surfaces[4]}
                   name={categories[4]}
-                  shacolor={"#9a326e"}
+                  shacolor={"#5E225E"}
                 />
                 {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -127,7 +127,7 @@ const Home = () => {
                 <PlanetContainer
                   surface={surfaces[5]}
                   name={categories[5]}
-                  shacolor={"#b97a94"}
+                  shacolor={"#3BEDE8"}
                 />
                 {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -138,7 +138,7 @@ const Home = () => {
                 <PlanetContainer
                   surface={surfaces[6]}
                   name={categories[6]}
-                  shacolor={"#b97a94"}
+                  shacolor={"#CE6C34"}
                 />
                 {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet
@@ -148,7 +148,7 @@ const Home = () => {
                 <PlanetContainer
                   surface={surfaces[7]}
                   name={categories[7]}
-                  shacolor={"#b97a94"}
+                  shacolor={"#E5E5BB"}
                 />
                 {/* <div className="absolute w-1/3 bg-gray-400 h-auto aspect-square flex items-center justify-center">
               Planet

@@ -7,7 +7,7 @@ import "./aishown.css";
 const AIShown = () => {
   const location = useLocation();
   const { ai } = location.state;
-
+  console.log(ai);
   return (
     <>
       <MenuBar>
@@ -38,7 +38,11 @@ const AIShown = () => {
                 <RocketButton text={"Proyectos"} />
               </div>
               <div className="down-3">
-                <RocketButton text={"Docs"} />
+                <RocketButton
+                  text={"Visitar Sitio"}
+                  cat={ai.category}
+                  href={ai.link}
+                />
               </div>
             </div>
           </div>

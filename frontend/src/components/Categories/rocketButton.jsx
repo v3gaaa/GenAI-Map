@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const RocketButton = ({ text, cat, ai }) => {
+const RocketButton = ({ text, cat, ai, href }) => {
   const navigate = useNavigate();
   const handleRocketUrl = (category) => {
     if (text == "Back") {
@@ -9,7 +9,8 @@ const RocketButton = ({ text, cat, ai }) => {
       navigate("/ai", { state: { ai: ai } });
     } else if (text === "Visitar Sitio") {
       console.log(text);
-      console.log(category);
+      console.log(href);
+      window.location.href = href;
     }
   };
   return (

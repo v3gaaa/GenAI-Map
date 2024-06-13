@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import spaceShip from "../../assets/SS.gif";
 import noImage from "../../assets/noImage.png";
+import MDRenderer from "./MDRenderer";
 
 const PromptAIs = () => {
   const location = useLocation();
@@ -44,8 +45,8 @@ const PromptAIs = () => {
     <>
       <MenuBar>
         <div className="h-full w-full flex flex-col justify-center align-center overflow-auto">
-          <div className="w-5/6 h-1/3 flex justify-center items-center text-lg text-white my-5 relative z-50 text-justify align-center self-center border border-white rounded-xl p-10">
-            {descriptionPrompt}
+          <div className="w-5/6 h-1/3 flex flex-col justify-center text-lg text-white my-5 relative z-50 text-justify self-center border border-white rounded-xl p-10 overflow-auto p-40">
+            <MDRenderer markdownText={descriptionPrompt} />
           </div>
           <div className="flex justify-start w-11/12 place-self-center text-center text-white z-10">
             <p
