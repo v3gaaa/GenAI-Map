@@ -54,17 +54,15 @@ const setupLangChain = async () => {
     dialect: 'postgres',
   });
 
-  const answerPrompt = PromptTemplate.fromTemplate(`Given the following user question, generate a SQL query that finds the info that the user wants, execute the query, and return the results (The query should always start with=(SELECT "id",). The user is not aware of SQL or technical details, so provide a concise and user-friendly description of the results. Start with a general overview (summary), followed by why they are good (Based on the description that each AI has). Dont tell the user anything about databases is super important you give the user relevant info only. Be an assistant
+  const answerPrompt = PromptTemplate.fromTemplate(`Given the following user question, generate a SQL query that finds the info that the user wants, execute the query, and return the results. The user is not aware of SQL or technical details, so provide a concise and user-friendly description of the results. Start with a general overview (summary), followed by why they are good (Based on the description that each AI has). Don't tell the user anything about databases. It is super important you give the user relevant info only. Be an assistant. Always limit the query results to 10.
 
   User's Question: {question}
-  SQL Query: {query}
+  SQL Query (LIMIT 10): {query}
   SQL Result: {result}
   Answer:
 
   Summary: Provide a general summary of the results.`);
-  
-  const answerQuery = await answerPrompt.pipe(llm).pipe(new StringOutputParser());
-  
+
   const answerChain = answerPrompt.pipe(llm).pipe(new StringOutputParser());
 
   const chain = RunnableSequence.from([
