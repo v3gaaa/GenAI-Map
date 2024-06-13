@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import star from "../../assets/starLogo.svg";
 import spaceShip from "../../assets/SS.gif";
 import { useState, useEffect } from "react";
@@ -5,12 +6,10 @@ import noImage from "../../assets/noImage.png";
 import downloadImg from "../../assets/download.svg";
 import Planet from "../planetcomponents/Planet";
 
-
-const Lista = ({ category, setContent }) => {
-
+const Lista = ({ AIs, category, setCategory, loading }) => {
+  const navigate = useNavigate();
   const [hovered, setHovered] = useState(null);
   const [cat, setCat] = useState(category);
-  const [AIs, setAIs] = useState([]);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -18,34 +17,23 @@ const Lista = ({ category, setContent }) => {
     "Image",
     "Text",
     "Video",
-    "Music & Sound",
-    "Code Generator",
+    "Music",
+    "Code",
     "Data",
     "Game",
-    "Vector database",
+    "Vector",
   ];
 
   const handleCategoryChange = (newCategory) => {
     setCat(newCategory);
+    setCategory(newCategory);
     setIsDropdownOpen(false);
   };
 
   const handleAISelected = (ia) => {
     console.log(ia);
+    navigate("/ai", { state: { ai: ia } });
   };
-
-  const fetchAIs = async () => {
-    const response = await fetch("http://localhost:8000/api/ais");
-    const data = await response.json();
-    setAIs(data);
-    console.log(data);
-  };
-
-  const catLower = cat.toLowerCase();
-
-  useEffect(() => {
-    fetchAIs();
-  }, []);
 
   return (
     <>
@@ -89,9 +77,10 @@ const Lista = ({ category, setContent }) => {
                       cursor: "pointer",
                       whiteSpace: "nowrap",
                     }}
+                    className="hover:bg-white hover:text-black"
                     onClick={() => handleCategoryChange(cat)}
                   >
-                    {cat}
+                    {cat === "Music" ? "Music & Sound" : cat}
                   </li>
                 ))}
               </ul>
@@ -104,60 +93,64 @@ const Lista = ({ category, setContent }) => {
           </p>
           <p className="font-light text-sm text-center w-1/6">Name</p>
           <p className="font-light text-sm text-center w-5/12">Description</p>
-          <p className="font-light text-sm text-center w-3/12">Category</p>
-          <p className="font-light text-sm text-center w-1/12 ml-auto">Stars</p>
+          <p className="font-light text-sm text-center w-2/12">Category</p>
+          <p className="font-light text-sm text-center w-2/12 ml-auto">Price</p>
           <p className="font-light text-sm text-center w-1/12 ml-auto">
-            Downloads
+            Rating
           </p>
         </div>
 
         <div className="w-full h-full flex flex-col items-center content-start overflow-auto relative z-10">
-          {AIs.filter((ai) => ai.category.includes(catLower)).map((ia, idx) => (
-            <div
-              key={idx}
-              className="w-11/12 h-16 m-2 p-1 flex flex-row items-center justify-start rounded-full border-white border-2 text-white hover:translate-x-0.5 hover:-translate-y-0.5 hover:border-blue-500 cursor-pointer z-10"
-              onMouseEnter={() => {
-                setHovered(idx);
-              }}
-              onMouseLeave={() => {
-                setHovered(null);
-              }}
-
-              onClick={() => handleAISelected(ia)}
-
-            >
-              <div className="h-full w-auto aspect-square rounded-full flex justify-center mx-1 z-10">
-                {hovered === idx ? (
-                  <img src={spaceShip} alt={ia.name} className="h-5/6 w-full" />
-                ) : (
-                  <img
-                    src={ia.logo === null ? noImage : ia.logo}
-                    alt={ia.name}
-                    className="h-full w-full rounded-full"
-                  />
-                )}
-              </div>
-              <p className="w-1/6 text-center">{ia.name}</p>
-              <p className="w-5/12 text-center">{ia.description}</p>
-              <p className="w-3/12 text-center">{ia.category}</p>
-              <div className="h-full w-1/12 rounded-full flex flex-row justify-end items-center">
-                <p className="flex text-center align-middle">{ia.stars}</p>
-                <img
-                  src={star}
-                  alt="star"
-                  className="h-2/3 aspect-square ml-2"
-                />
-              </div>
-              <div className="h-full w-1/12 rounded-full flex flex-row justify-end items-center">
-                <p className="flex text-center align-middle">{ia.downloads}</p>
-                <img
-                  src={downloadImg}
-                  alt="star"
-                  className="h-2/3 aspect-square ml-2 mr-1"
-                />
-              </div>
+          {loading ? (
+            <div className="w-full h-full text-white flex justify-center items-center">
+              Loading...
             </div>
-          ))}
+          ) : (
+            AIs.filter((ai) => ai.category.includes(cat.toLowerCase())).map(
+              (ia, idx) => (
+                <div
+                  key={idx}
+                  className="w-11/12 h-20 m-2 p-1 flex flex-row items-center justify-start rounded-full border-white border-2 text-white hover:translate-x-0.5 hover:-translate-y-0.5 hover:border-blue-500 cursor-pointer z-10"
+                  onMouseEnter={() => {
+                    setHovered(idx);
+                  }}
+                  onMouseLeave={() => {
+                    setHovered(null);
+                  }}
+                  onClick={() => handleAISelected(ia)}
+                >
+                  <div className="h-full w-auto aspect-square rounded-full flex justify-center mx-1 z-10">
+                    {hovered === idx ? (
+                      <img
+                        src={spaceShip}
+                        alt={ia.name}
+                        className="h-5/6 w-full"
+                      />
+                    ) : (
+                      <img
+                        src={ia.logo === null ? noImage : ia.logo}
+                        alt={ia.name}
+                        className="h-full w-full rounded-full"
+                      />
+                    )}
+                  </div>
+                  <p className="w-1/6 text-center">{ia.name}</p>
+                  <p className="w-5/12 text-center truncate text-ellipsis ">
+                    {ia.description}
+                  </p>
+                  <p className="w-2/12 text-center">{ia.category}</p>
+                  <div className="h-full w-2/12 rounded-full flex flex-row justify-center items-center">
+                    <p className="flex text-center align-middle truncate hover:text-clip">
+                      {ia.price}
+                    </p>
+                  </div>
+                  <div className="h-full w-1/12 rounded-full flex flex-row justify-center items-center">
+                    <p className="flex text-center align-middle">{ia.rating}</p>
+                  </div>
+                </div>
+              )
+            )
+          )}
         </div>
       </div>
     </>

@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Planet from "./Planet";
 
-const PlanetContainer = ({ surface, name, shacolor, setContent, setCate }) => {
+const PlanetContainer = ({ surface, name, shacolor }) => {
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [cate, setCate] = useState("");
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     setHovered(true);
@@ -16,8 +19,11 @@ const PlanetContainer = ({ surface, name, shacolor, setContent, setCate }) => {
   };
 
   const handleClick = () => {
-    setCate(name);
-    setContent("category");
+    if (name == "Music & Sound") {
+      setCate("Music");
+    } else {
+      setCate(name);
+    }
   };
 
   const handleClickOutside = (event) => {
@@ -25,6 +31,12 @@ const PlanetContainer = ({ surface, name, shacolor, setContent, setCate }) => {
       setClicked(false);
     }
   };
+
+  useEffect(() => {
+    if (cate) {
+      navigate("/category", { state: { category: cate } });
+    }
+  }, [cate, navigate]);
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);

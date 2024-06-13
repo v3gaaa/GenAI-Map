@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import PlanetContainer from "../planetcomponents/PlanetContainer";
+import React, { useState } from "react";
 import bcrypt from "bcryptjs";
 
 const Register = () => {
-  const navigate = useNavigate();
   const [form, setForm] = useState({
     username: "",
     email: "",
@@ -11,6 +10,12 @@ const Register = () => {
     firstname: "",
     lastname: "",
   });
+
+  const [rep, setRep] = useState("");
+
+  const handleSignIn = () => {
+    navigation.navigate("/signin");
+  };
 
   const handleOnChange = (e) => {
     console.log(e.target.name);
@@ -22,37 +27,49 @@ const Register = () => {
     console.log(newValues);
     setForm(newValues);
   };
-
+  let user;
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(form.password, salt);
-
-      const formWithHashedPassword = {
-        ...form,
-        password: hashedPassword,
-      };
-
-      console.log(formWithHashedPassword);
-
-      const res = await fetch("http://localhost:8000/api/users/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formWithHashedPassword),
-      });
-      if (res.status === 201) {
-        alert("Registro exitoso");
-        navigate("/");
-      } else {
-        alert("Error al registrar");
-        navigate("/register");
-      }
+      const res = await fetch(
+        "http://localhost:8000/api/users/username/" + form.username
+      );
+      user = await res.json();
+      setRep("Este usuario ya existe");
     } catch (error) {
-      alert("Error al registrar");
-      throw new Error("Error al registrar");
+      try {
+        const res = await fetch(
+          "http://localhost:8000/api/users/email/" + form.username
+        );
+        user = await res.json();
+        setRep("Este email ya existe");
+      } catch (error) {
+        setRep("");
+        console.log("Username:" + user);
+        return;
+      }
+    }
+
+    if (rep == "") {
+      try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(form.password, salt);
+
+        const formWithHashedPassword = {
+          ...form,
+          password: hashedPassword,
+        };
+
+        const res = await fetch("http://localhost:8000/api/users/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formWithHashedPassword),
+        });
+
+        return res.status === 201;
+      } catch (error) {}
     }
   };
 
@@ -80,40 +97,60 @@ const Register = () => {
               <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
                 <div className="flex flex-col space-y-2 text-center">
                   <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    Welcome back!
+                    Try AI Universe!
                   </h2>
                   <p className="text-md md:text-xl text-white">
-                    Log in into your account
+                    Create your account
                   </p>
+                  <p className="text-md md:text-xl text-white">{rep}</p>
+                  {rep != "" ? (
+                    <span
+                      onClick={handleSignIn}
+                      style={{ cursor: "pointer", color: "blue" }}
+                    >
+                      Click here to sign in
+                    </span>
+                  ) : null}
                 </div>
                 <div className="flex flex-col max-w-md space-y-5">
-                  <input
-                    id="firstname"
-                    name="firstname"
-                    type="firstname"
-                    autoComplete="firstname"
-                    placeholder="Name"
-                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
-                    onChange={handleOnChange}
-                    value={form.firstname}
-                  />
-                  <input
-                    id="lastname"
-                    name="lastname"
-                    type="lastname"
-                    autoComplete="lastname"
-                    placeholder="Last name"
-                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
-                    onChange={handleOnChange}
-                    value={form.lastname}
-                  />
+                  <div className="flex flex-row">
+                    <div className="w-1/2">
+                      <div className="mr-2">
+                        <input
+                          id="firstname"
+                          name="firstname"
+                          type="firstname"
+                          autoComplete="name"
+                          placeholder="Name"
+                          className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal w-full bg-[#0C0618] text-white"
+                          onChange={handleOnChange}
+                          value={form.firstname}
+                        />
+                      </div>
+                    </div>
+                    <div className="w-1/2">
+                      <div className="ml-2">
+                        <input
+                          id="lastname"
+                          name="lastname"
+                          type="lastname"
+                          autoComplete="lastname"
+                          placeholder="Last name"
+                          className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal w-full bg-[#0C0618] text-white"
+                          onChange={handleOnChange}
+                          value={form.lastname}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                   <input
                     id="username"
                     name="username"
                     type="username"
                     autoComplete="username"
                     placeholder="Username"
-                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal bg-[#0C0618] text-white"
                     onChange={handleOnChange}
                     value={form.username}
                   />
@@ -122,8 +159,8 @@ const Register = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    placeholder="Email or username"
-                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal"
+                    placeholder="Email"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-[white] rounded-lg font-medium placeholder:font-normal bg-[#0C0618] text-white"
                     onChange={handleOnChange}
                     value={form.email}
                   />
@@ -133,16 +170,16 @@ const Register = () => {
                     type="password"
                     autoComplete="current-password"
                     placeholder="Password"
-                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-green rounded-lg font-medium placeholder:font-normal"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-green rounded-lg font-medium placeholder:font-normal bg-[#0C0618] text-white"
                     onChange={handleOnChange}
                     value={form.password}
                   />
                   <button
-                    className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-white bg-black text-white"
+                    className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-white bg-white text-black hover:border-green-500"
                     type="button"
                     onClick={handleSignUp}
                   >
-                    Sign in
+                    Sign up
                   </button>
                 </div>
               </div>

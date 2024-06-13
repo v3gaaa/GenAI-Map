@@ -4,6 +4,7 @@ import "./Categories.css";
 import Planet2Container from "../planetcomponents/Planet2Container";
 import CatCarousel from "./catCarousel";
 import Planet from "../planetcomponents/Planet";
+import { useState } from "react";
 
 const slides = [
   {
@@ -27,13 +28,82 @@ const slides = [
   // Agrega más objetos aquí para más slides
 ];
 
-const Category = ({ text, href, Category }) => {
+const Category = ({ AIs, text, href, category, setCategory }) => {
+  const [hovered, setHovered] = useState(null);
+  const [cat, setCat] = useState(category);
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const categories = [
+    "Image",
+    "Text",
+    "Video",
+    "Music",
+    "Code",
+    "Data",
+    "Game",
+    "Vector Database",
+  ];
+
+  const handleCategoryChange = (newCategory) => {
+    setCat(newCategory);
+    setCategory(newCategory);
+    setIsDropdownOpen(false);
+  };
   return (
     <>
       <div className="main-container">
         <div className="container-up">
-          <h1 className="text-6xl text-white pb-5">{Category}</h1>
-          <CatCarousel slides={slides} />
+          <div className="w-full h-20 flex justify-center items-center text-3xl text-white my-5 relative z-50">
+            <div className="w-1/12 h-full">
+              <Planet surface={"p5.jpg"} />
+            </div>
+            <div className="z-50 relative">
+              <p
+                style={{
+                  display: "inline",
+                  cursor: "pointer",
+                  height: "90%",
+                }}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                {cat} <span style={{ marginLeft: "10px" }}>▼</span>
+              </p>
+              {isDropdownOpen && (
+                <ul
+                  style={{
+                    position: "absolute",
+                    top: "100%", // Position below the <p> element
+                    left: 0,
+                    backgroundColor: "gray",
+                    color: "white",
+                    border: "1px solid white",
+                    borderRadius: "4px",
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                    zIndex: 1000,
+                  }}
+                >
+                  {categories.map((cat) => (
+                    <li
+                      key={cat}
+                      style={{
+                        padding: "8px 12px",
+                        cursor: "pointer",
+                        whiteSpace: "nowrap",
+                      }}
+                      className="hover:bg-white hover:text-black"
+                      onClick={() => handleCategoryChange(cat)}
+                    >
+                      {cat === "Music" ? "Music & Sound" : cat}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+          <CatCarousel AIs={AIs} cat={cat}/>
         </div>
 
         <div className="container-down">
